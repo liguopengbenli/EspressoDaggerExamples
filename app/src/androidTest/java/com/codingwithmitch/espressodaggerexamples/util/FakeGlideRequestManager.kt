@@ -1,0 +1,17 @@
+package com.codingwithmitch.espressodaggerexamples.util
+
+import android.widget.ImageView
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class FakeGlideRequestManager
+@Inject
+constructor(): GlideManager{
+    override fun setImage(imageUrl: String, imageView: ImageView) {
+        // does nothing just for ignore testing networking image
+    }
+
+// if you want to test asset we will set
+
+}
