@@ -17,9 +17,9 @@ constructor(
     private val jsonUtil: JsonUtil
 ): ApiService{
 
-    val blogPostJsonFileName: String = Constants.BLOG_POSTS_DATA_FILENAME
-    val categoryJsonFileName: String = Constants.CATEGORIES_DATA_FILENAME
-    val networkDelay: Long = 0L
+    var blogPostJsonFileName: String = Constants.BLOG_POSTS_DATA_FILENAME
+    var categoryJsonFileName: String = Constants.CATEGORIES_DATA_FILENAME
+    var networkDelay: Long = 0L
 
     override suspend fun getBlogPosts(category: String): List<BlogPost> {
         val rawJson = jsonUtil.readJSONFromAsset(blogPostJsonFileName)
