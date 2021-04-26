@@ -37,7 +37,7 @@ import javax.inject.Inject
 
 @InternalCoroutinesApi
 @RunWith(AndroidJUnit4ClassRunner::class)
-class DetailFragmentTest {
+class DetailFragmentTest : BaseMainActivityTest(){
 
     @Inject
     lateinit var viewModelFactory: FakeMainViewModelFactory
@@ -106,35 +106,8 @@ class DetailFragmentTest {
 
     }
 
-    fun injectTest(application: TestBaseApplication){
+    override fun injectTest(application: TestBaseApplication){
         (application.appComponent as TestAppComponent).inject(this)
     }
-
-    fun configureFakeApiService(
-        blogsDataSource: String? = null,
-        categoriesDataSource: String? = null,
-        networkDelay: Long? = null,
-        application: TestBaseApplication
-    ): FakeApiService
-    {
-       val apiService = (application.appComponent as TestAppComponent).apiService
-        blogsDataSource?.let { apiService.blogPostJsonFileName = it }
-        categoriesDataSource?.let { apiService.categoryJsonFileName = it }
-        networkDelay?.let { apiService.networkDelay = it }
-        return apiService
-    }
-
-    fun configureFakeRepository(
-        apiService: FakeApiService,
-        application: TestBaseApplication
-    ): FakeMainRepositoryImpl
-    {
-        val mainRepository = (application.appComponent as TestAppComponent).mainRepository
-        mainRepository.apiService = apiService
-        return mainRepository
-    }
-
-
-
 
 }
