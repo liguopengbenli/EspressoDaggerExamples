@@ -96,6 +96,7 @@ constructor(
                     listAdapter.apply {
                         submitList(blogs)
                     }
+                    Log.i("lig", "lig blog = $blogs")
                     displayTheresNothingHereTV((blogs.size > 0))
                 }
                 view.categories?.let { categories ->
