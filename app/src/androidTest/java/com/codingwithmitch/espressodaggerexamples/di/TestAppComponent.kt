@@ -5,6 +5,7 @@ import com.codingwithmitch.espressodaggerexamples.api.FakeApiService
 import com.codingwithmitch.espressodaggerexamples.fragments.MainNavHostFragment
 import com.codingwithmitch.espressodaggerexamples.repository.FakeMainRepositoryImpl
 import com.codingwithmitch.espressodaggerexamples.ui.DetailFragmentTest
+import com.codingwithmitch.espressodaggerexamples.ui.ListFragmentErrorTests
 import com.codingwithmitch.espressodaggerexamples.ui.ListFragmentIntegrationTests
 import com.codingwithmitch.espressodaggerexamples.ui.MainActivity
 import dagger.BindsInstance
@@ -37,6 +38,8 @@ interface TestAppComponent: AppComponent {
     fun inject(detailFragmentTest: DetailFragmentTest)
 
     fun inject(listFragmentIntegrationTests: ListFragmentIntegrationTests)
+
+    fun inject(listFragmentErrorTests: ListFragmentErrorTests)
 
 }
 
