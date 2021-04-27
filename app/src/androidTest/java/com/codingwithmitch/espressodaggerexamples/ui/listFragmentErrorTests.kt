@@ -44,8 +44,32 @@ class ListFragmentErrorTests: BaseMainActivityTest(){
 
         onView(withSubstring(Constants.UNKNOWN_ERROR))
             .check(matches(isDisplayed()))
+    }
 
-        
+    @Test
+    fun doesNetworkTimeout_networkTimeoutError() {
+        val app = InstrumentationRegistry
+            .getInstrumentation()
+            .targetContext
+            .applicationContext as TestBaseApplication
+
+        val apiService = configureFakeApiService(
+            blogsDataSource = Constants.BLOG_POSTS_DATA_FILENAME,
+            categoriesDataSource = Constants.CATEGORIES_DATA_FILENAME,
+            networkDelay = 4000L,
+            application = app
+        )
+
+        configureFakeRepository(apiService, app)
+        injectTest(app)
+
+        val scenario = launchActivity<MainActivity>()
+
+        onView(withText(R.string.text_error))
+            .check(matches(isDisplayed()))
+
+        onView(withSubstring(Constants.NETWORK_ERROR_TIMEOUT))
+            .check(matches(isDisplayed()))
     }
 
     override fun injectTest(application: TestBaseApplication) {
