@@ -16,7 +16,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.codingwithmitch.espressodaggerexamples.MockTestRunner"
+
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+
     }
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -105,4 +112,7 @@ dependencies {
 
     def androidx_test_core = "1.2.0"
     androidTestImplementation "androidx.test:core-ktx:$androidx_test_core"
+
+    androidTestUtil 'androidx.test:orchestrator:1.1.0'
+
 }
